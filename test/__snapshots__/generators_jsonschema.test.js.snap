@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`generators/graphql should have the expected description 1`] = `"Generate JSONSchema from your data"`;
+exports[`generators/jsonschema should have the expected description 1`] = `"Generate JSONSchema from your data"`;
 
-exports[`generators/graphql should output the expected jsonschema for the mock 1`] = `
+exports[`generators/jsonschema should output the expected jsonschema for the mock 1`] = `
 "{
   \\"$schema\\": \\"http://json-schema.org/draft-04/schema#\\",
   \\"description\\": \\"TestType\\",

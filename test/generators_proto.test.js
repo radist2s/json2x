@@ -2,7 +2,7 @@
 import * as gen from '../src/generators/proto'
 import { g } from '../src/json2x'
 
-describe('generators/graphql', () => {
+describe('generators/proto', () => {
   it('should have the expected description', () => {
     expect(gen.description).toMatchSnapshot()
   })

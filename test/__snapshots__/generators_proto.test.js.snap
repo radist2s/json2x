@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`generators/graphql should have the expected description 1`] = `"Generate GraphQL types from your data"`;
+exports[`generators/proto should have the expected description 1`] = `"Generate GraphQL types from your data"`;
 
-exports[`generators/graphql should output the expected protobuf schema for the mock 1`] = `
+exports[`generators/proto should output the expected protobuf schema for the mock 1`] = `
 "message TestType {
   string name = 1;
   string username = 2;
