@@ -1,6 +1,6 @@
 {
-  "name": "json2x",
-  "version": "1.1.2",
+  "name": "@radist2s/json2x",
+  "version": "1.1.5",
   "description": "Use your JSON data to generate models for various things",
   "main": "build/index.js",
   "keywords": [
@@ -22,8 +22,7 @@
     "json2x": "build/json2x.js"
   },
   "files": [
-    "build/index.js",
-    "build/json2x"
+    "build"
   ],
   "repository": {
     "type": "git",
@@ -36,7 +35,7 @@
   },
   "homepage": "https://github.com/konsumer/json2x#readme",
   "dependencies": {
-    "@babel/polyfill": "latest",
+    "@babel/polyfill": "^7.8.7",
     "capitalize": "latest",
     "glob-require": "latest",
     "json-schema-generator": "latest",
@@ -61,5 +60,8 @@
   },
   "jest": {
     "testRegex": "/test/.+\\.(test|spec)\\.js$"
+  },
+  "directories": {
+    "test": "test"
   }
 }
