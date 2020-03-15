@@ -19,7 +19,7 @@ Array [
     "run": [Function],
   },
   Object {
-    "description": "Generate GraphQL types from your data",
+    "description": "Generate Protobuf types from your data",
     "makeType": [Function],
     "options": [Function],
     "run": [Function],
@@ -49,6 +49,7 @@ Object {
   "id": "string",
   "lastSaid": "string",
   "name": "string",
+  "nullable": "null",
   "phone": "string",
   "testnumobjnums": Object {
     "deeper": Object {

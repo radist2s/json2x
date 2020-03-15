@@ -1,7 +1,7 @@
 import capitalize from 'capitalize'
-import { getTypes } from '../index'
+import {getTypes} from '../index'
 
-export const description = 'Generate GraphQL types from your data'
+export const description = 'Generate Protobuf types from your data'
 
 export const options = yargs => {
   yargs.example('$0 proto User ./users/*.json', 'Make a type called User from a bunch of JSON files.')
@@ -10,26 +10,44 @@ export const options = yargs => {
 const typeMap = {
   int: 'int32',
   float: 'float',
-  string: 'string'
+  string: 'string',
+  boolean: 'bool',
+  null: 'google.protobuf.NullValue'
 }
 
+const importingTypes = ['null']
+
 export const makeType = (name, types) => {
+  let hasImportedTypes = false
+
   const others = []
-  return `message ${name} {
+  const messageStruct = `message ${name} {
   ${Object.keys(types).map((t, i) => {
-    if (typeof types[t] === 'string') {
-      return `${typeMap[types[t]]} ${t} = ${i + 1};`
+    const jsonType = types[t]
+    
+    if (typeof jsonType === 'string') {
+      hasImportedTypes = hasImportedTypes || (importingTypes.indexOf(jsonType) !== -1)
+      
+      return `${typeMap[jsonType]} ${t} = ${i + 1};`
     } else {
-      if (Array.isArray(types[t])) {
-        return `repeated ${typeMap[types[t][0]]} ${t} = ${i + 1};`
+      if (Array.isArray(jsonType)) {
+        return `repeated ${typeMap[jsonType[0]]} ${t} = ${i + 1};`
       } else {
-        others.push(makeType(`${capitalize(name)}${capitalize(t)}`, types[t]))
+        others.push(makeType(`${capitalize(name)}${capitalize(t)}`, jsonType))
         return `${capitalize(name)}${capitalize(t)} ${t} = ${i + 1};`
       }
     }
   }).join('\n  ')}
 }
 ` + others.join('')
+
+  const protobuf = [
+    'syntax = "proto3";',
+    hasImportedTypes ? 'import "google/protobuf/struct.proto";' : '',
+    messageStruct
+  ].filter(value => value.trim()).join("\n\n")
+
+  return protobuf
 }
 
 export const run = ({ MODEL, data }) => {

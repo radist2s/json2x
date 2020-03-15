@@ -12,6 +12,7 @@ exports[`generators/graphql should output the expected graphql input schema for 
   id: String
   lastSaid: String
   doing: String
+  nullable: Null
   address: TestinputAddress
   company: TestinputCompany
   testnumobjnums: TestinputTestnumobjnums
@@ -50,6 +51,7 @@ input InputTestInput {
   id: String
   lastSaid: String
   doing: String
+  nullable: Null
   address: InputtestinputAddress
   company: InputtestinputCompany
   testnumobjnums: InputtestinputTestnumobjnums
@@ -92,6 +94,7 @@ exports[`generators/graphql should output the expected graphql schema for the mo
   id: String
   lastSaid: String
   doing: String
+  nullable: Null
   address: TesttypeAddress
   company: TesttypeCompany
   testnumobjnums: TesttypeTestnumobjnums
